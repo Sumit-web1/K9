@@ -16,7 +16,7 @@
 }
 
 
-.container {
+.form-container {
   padding: 4vw;
 }
 
@@ -83,6 +83,10 @@ p {
     color: #fff;
 }
 
+.input input:nth-child(2){
+  text-transform: capitalize;
+}
+
 /* Create Account Button */
 button{
     width: 173px;
@@ -94,6 +98,7 @@ button{
     color: #fff;
     font-size: 24px;
     font-weight: 600;
+    text-decoration: none;
     border: none;
     border-radius: 100px;
     background: linear-gradient(90deg, #5752FC 62.47%, rgba(87, 82, 252, 0.00) 99.9%);;
