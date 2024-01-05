@@ -1,0 +1,19 @@
+.bottomNav{
+    position: fixed;
+    bottom: 0%;
+    background: #000;
+    padding: 4vw;
+    width: 100%;
+    z-index: 9999;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.bottomNav svg{
+    width: 35px;
+    height: 35px;
+}
