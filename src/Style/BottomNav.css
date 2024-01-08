@@ -13,6 +13,17 @@
     gap: 10px;
 }
 
+.bottom-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-family: Poppins;
+    font-weight: 400;
+}
+
 .bottomNav svg{
     width: 35px;
     height: 35px;
