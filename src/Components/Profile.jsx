@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import OTP from './OTP'
 
 function Profile() {
   return (
@@ -9,6 +10,7 @@ function Profile() {
           <path d="M20.9688 34.375L8.59375 22L20.9688 9.625M10.3125 22L35.4062 22" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </Link>
+      
     </div>
   )
 }
