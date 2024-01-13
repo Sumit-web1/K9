@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import '../Style/Register.css'
 import { ReactComponent as TopSvg } from '../SVG/top-graphic.svg'
 
 function Register() {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         mobile: "",
@@ -18,12 +20,16 @@ function Register() {
             ...formData,
             [name]: value,
         });
+
     };
 
     const handleCreate = () => {
         // Log the form data to the console
         console.log(formData);
         // Add logic to handle form submission, e.g., sending data to a server
+        
+        // Navigate to the next route with the username as state
+        navigate('/home', { state: { userName: formData.name } });
     };
 
     return (
@@ -41,7 +47,7 @@ function Register() {
                 </p>
 
                 {/* Form Getting User Mobile Number, Password & Confirm Password*/}
-                <form className="input-box" onSubmit={handleChange}>
+                <form className="input-box">
                     <div className="input flex">
                         <h4>+91</h4>
                         <input type="tel" name="mobile" id="mobile" placeholder='Mobile Number' value={formData.mobile}
@@ -79,7 +85,7 @@ function Register() {
 
                 {/* Create an Account Button */}
                 <div className="shift-left">
-                    <Link to={"/home"}>
+                    <Link to={{ pathname: "/home", state: { userName: formData.name } }}>
                         <button onClick={handleCreate}>
                             Create
                             <span>

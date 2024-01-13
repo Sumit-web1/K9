@@ -1,0 +1,16 @@
+.wallets{
+    padding: 4vw;
+}
+
+.wallets hr{
+    margin-top: 30px;
+    opacity: 0.5;
+}
+
+.wallet{
+    width: 100%;
+    height: 170px;
+    margin-top: 10px;
+    border-radius: 25px;
+    background: #262630;
+}

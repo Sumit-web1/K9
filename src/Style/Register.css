@@ -117,7 +117,7 @@ button span{
 
 /* Bottom Graphic & Login Button*/
 .bottom{
-  position: absolute;
+  position: relative;
   bottom: 0%;
     width: 100%;
     padding: 4vw;
