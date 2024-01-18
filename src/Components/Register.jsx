@@ -7,9 +7,9 @@ function Register() {
 
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        mobile: "",
+    const [user, setFormData] = useState({
         name: "",
+        mobile: "",
         password: "",
         confirmedPassword: "",
     });
@@ -17,19 +17,38 @@ function Register() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
-            ...formData,
+            ...user,
             [name]: value,
         });
 
     };
 
-    const handleCreate = () => {
+    const handleCreate = async () => {
         // Log the form data to the console
-        console.log(formData);
-        // Add logic to handle form submission, e.g., sending data to a server
+        console.log(user);
+        // Add logic to handle form submission, e.g., sending data to a server]
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/auth/register`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json",
+                },
+                body: JSON.stringify(user)
+            });
+
+            console.log(response);
+
+        } catch (error) {
+            console.log("register", error);
+        }
+
+
         
+
+
         // Navigate to the next route with the username as state
-        navigate('/home', { state: { userName: formData.name } });
+        navigate('/home', { state: { userName: user.name } });
     };
 
     return (
@@ -50,14 +69,14 @@ function Register() {
                 <form className="input-box">
                     <div className="input flex">
                         <h4>+91</h4>
-                        <input type="tel" name="mobile" id="mobile" placeholder='Mobile Number' value={formData.mobile}
+                        <input type="tel" name="mobile" id="mobile" placeholder='Mobile Number' value={user.mobile}
                             onChange={handleChange} required />
                     </div>
                     <div className="input flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9998 1.97925C17.0051 1.97925 15.0922 2.77162 13.6817 4.18205C12.2713 5.59248 11.4789 7.50543 11.4789 9.50008C11.4789 11.4947 12.2713 13.4077 13.6817 14.8181C15.0922 16.2285 17.0051 17.0209 18.9998 17.0209C20.9944 17.0209 22.9074 16.2285 24.3178 14.8181C25.7282 13.4077 26.5206 11.4947 26.5206 9.50008C26.5206 7.50543 25.7282 5.59248 24.3178 4.18205C22.9074 2.77162 20.9944 1.97925 18.9998 1.97925ZM13.8539 9.50008C13.8539 8.13532 14.3961 6.82646 15.3611 5.86143C16.3261 4.8964 17.635 4.35425 18.9998 4.35425C20.3645 4.35425 21.6734 4.8964 22.6384 5.86143C23.6034 6.82646 24.1456 8.13532 24.1456 9.50008C24.1456 10.8648 23.6034 12.1737 22.6384 13.1387C21.6734 14.1038 20.3645 14.6459 18.9998 14.6459C17.635 14.6459 16.3261 14.1038 15.3611 13.1387C14.3961 12.1737 13.8539 10.8648 13.8539 9.50008ZM18.9998 19.3959C15.3375 19.3959 11.9618 20.2287 9.46176 21.6347C6.9981 23.0217 5.1456 25.1212 5.1456 27.7084V27.8699C5.14401 29.7097 5.14243 32.0182 7.16751 33.6681C8.16343 34.4787 9.55835 35.0567 11.4425 35.4367C13.3298 35.8198 15.7919 36.0209 18.9998 36.0209C22.2076 36.0209 24.6681 35.8198 26.5586 35.4367C28.4428 35.0567 29.8361 34.4787 30.8336 33.6681C32.8587 32.0182 32.8555 29.7097 32.8539 27.8699V27.7084C32.8539 25.1212 31.0014 23.0217 28.5393 21.6347C26.0377 20.2287 22.6636 19.3959 18.9998 19.3959ZM7.5206 27.7084C7.5206 26.361 8.50543 24.898 10.6255 23.7057C12.7092 22.5341 15.6668 21.7709 19.0013 21.7709C22.3327 21.7709 25.2903 22.5341 27.374 23.7057C29.4957 24.898 30.4789 26.361 30.4789 27.7084C30.4789 29.7794 30.4156 30.9447 29.3326 31.8251C28.7468 32.3032 27.7651 32.7703 26.0868 33.1092C24.4132 33.448 22.1253 33.6459 18.9998 33.6459C15.8743 33.6459 13.5848 33.448 11.9128 33.1092C10.2344 32.7703 9.25276 32.3032 8.66693 31.8267C7.58393 30.9447 7.5206 29.7794 7.5206 27.7084Z" fill="white" />
                         </svg>
-                        <input type="text" name="name" id="name" placeholder='Full Name' value={formData.name}
+                        <input type="text" name="name" id="name" placeholder='Full Name' value={user.name}
                             onChange={handleChange} required />
                     </div>
                     <div className="input flex">
@@ -65,7 +84,7 @@ function Register() {
                             <path d="M10.125 20.6667C10.125 21.0092 10.0065 21.3378 9.79549 21.58C9.58452 21.8222 9.29837 21.9583 9 21.9583C8.70163 21.9583 8.41548 21.8222 8.20451 21.58C7.99353 21.3378 7.875 21.0092 7.875 20.6667C7.875 20.3241 7.99353 19.9956 8.20451 19.7533C8.41548 19.5111 8.70163 19.375 9 19.375C9.29837 19.375 9.58452 19.5111 9.79549 19.7533C10.0065 19.9956 10.125 20.3241 10.125 20.6667ZM14.625 20.6667C14.625 21.0092 14.5065 21.3378 14.2955 21.58C14.0845 21.8222 13.7984 21.9583 13.5 21.9583C13.2016 21.9583 12.9155 21.8222 12.7045 21.58C12.4935 21.3378 12.375 21.0092 12.375 20.6667C12.375 20.3241 12.4935 19.9956 12.7045 19.7533C12.9155 19.5111 13.2016 19.375 13.5 19.375C13.7984 19.375 14.0845 19.5111 14.2955 19.7533C14.5065 19.9956 14.625 20.3241 14.625 20.6667ZM19.125 20.6667C19.125 21.0092 19.0065 21.3378 18.7955 21.58C18.5845 21.8222 18.2984 21.9583 18 21.9583C17.7016 21.9583 17.4155 21.8222 17.2045 21.58C16.9935 21.3378 16.875 21.0092 16.875 20.6667C16.875 20.3241 16.9935 19.9956 17.2045 19.7533C17.4155 19.5111 17.7016 19.375 18 19.375C18.2984 19.375 18.5845 19.5111 18.7955 19.7533C19.0065 19.9956 19.125 20.3241 19.125 20.6667Z" fill="white" />
                             <path d="M6.75 12.9166V10.3332C6.75 9.89408 6.7815 9.46137 6.84338 9.04158M20.25 12.9166V10.3332C20.2501 8.75902 19.8326 7.22208 19.0532 5.92698C18.2737 4.63187 17.1692 3.64001 15.8867 3.08339C14.6041 2.52677 13.2044 2.43178 11.8737 2.81108C10.543 3.19037 9.3444 4.02595 8.4375 5.20662M12.375 28.4166H9C5.8185 28.4166 4.22662 28.4166 3.23887 27.2812C2.25 26.1471 2.25 24.3194 2.25 20.6666C2.25 17.0137 2.25 15.186 3.23887 14.052C4.22662 12.9166 5.8185 12.9166 9 12.9166H18C21.1815 12.9166 22.7734 12.9166 23.7611 14.052C24.75 15.186 24.75 17.0137 24.75 20.6666C24.75 24.3194 24.75 26.1471 23.7611 27.2812C22.7734 28.4166 21.1815 28.4166 18 28.4166H16.875" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                         </svg>
-                        <input type="password" name="password" id="password" placeholder='Password' value={formData.password}
+                        <input type="password" name="password" id="password" placeholder='Password' value={user.password}
                             onChange={handleChange} required />
                     </div>
                     <div className="input flex">
@@ -78,14 +97,14 @@ function Register() {
                             name="confirmedPassword"
                             id="confirmPassword"
                             placeholder="Confirm Password"
-                            value={formData.confirmedPassword}
+                            value={user.confirmedPassword}
                             onChange={handleChange} required />
                     </div>
                 </form>
 
                 {/* Create an Account Button */}
                 <div className="shift-left">
-                    <Link to={{ pathname: "/home", state: { userName: formData.name } }}>
+                    <Link to={{ pathname: "/home", state: { userName: user.name } }}>
                         <button onClick={handleCreate}>
                             Create
                             <span>
