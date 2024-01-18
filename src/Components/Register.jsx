@@ -29,7 +29,7 @@ function Register() {
         // Add logic to handle form submission, e.g., sending data to a server]
 
         try {
-            const response = await fetch(`http://localhost:5000/api/auth/register`, {
+            const response = await fetch(`http://k9-money-income01.web.app/`, {
                 method: "POST",
                 headers: {
                     'Content-Type': "application/json",
