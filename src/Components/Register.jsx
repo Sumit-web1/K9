@@ -8,8 +8,8 @@ function Register() {
     const navigate = useNavigate();
 
     const [user, setFormData] = useState({
-        name: "",
-        mobile: "",
+        Name: "",
+        phone: "",
         password: "",
         confirmedPassword: "",
     });
@@ -29,7 +29,7 @@ function Register() {
         // Add logic to handle form submission, e.g., sending data to a server]
 
         try {
-            const response = await fetch(`http://k9-money-income01.web.app/`, {
+            const response = await fetch(`http://localhost:5000/api/auth/register`, {
                 method: "POST",
                 headers: {
                     'Content-Type': "application/json",
@@ -44,11 +44,9 @@ function Register() {
         }
 
 
-        
-
-
+    
         // Navigate to the next route with the username as state
-        navigate('/home', { state: { userName: user.name } });
+        navigate('/home', { state: { userName: user.Name } });
     };
 
     return (
@@ -69,14 +67,14 @@ function Register() {
                 <form className="input-box">
                     <div className="input flex">
                         <h4>+91</h4>
-                        <input type="tel" name="mobile" id="mobile" placeholder='Mobile Number' value={user.mobile}
+                        <input type="tel" name="phone" id="phone" placeholder='Mobile Number' value={user.phone}
                             onChange={handleChange} required />
                     </div>
                     <div className="input flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9998 1.97925C17.0051 1.97925 15.0922 2.77162 13.6817 4.18205C12.2713 5.59248 11.4789 7.50543 11.4789 9.50008C11.4789 11.4947 12.2713 13.4077 13.6817 14.8181C15.0922 16.2285 17.0051 17.0209 18.9998 17.0209C20.9944 17.0209 22.9074 16.2285 24.3178 14.8181C25.7282 13.4077 26.5206 11.4947 26.5206 9.50008C26.5206 7.50543 25.7282 5.59248 24.3178 4.18205C22.9074 2.77162 20.9944 1.97925 18.9998 1.97925ZM13.8539 9.50008C13.8539 8.13532 14.3961 6.82646 15.3611 5.86143C16.3261 4.8964 17.635 4.35425 18.9998 4.35425C20.3645 4.35425 21.6734 4.8964 22.6384 5.86143C23.6034 6.82646 24.1456 8.13532 24.1456 9.50008C24.1456 10.8648 23.6034 12.1737 22.6384 13.1387C21.6734 14.1038 20.3645 14.6459 18.9998 14.6459C17.635 14.6459 16.3261 14.1038 15.3611 13.1387C14.3961 12.1737 13.8539 10.8648 13.8539 9.50008ZM18.9998 19.3959C15.3375 19.3959 11.9618 20.2287 9.46176 21.6347C6.9981 23.0217 5.1456 25.1212 5.1456 27.7084V27.8699C5.14401 29.7097 5.14243 32.0182 7.16751 33.6681C8.16343 34.4787 9.55835 35.0567 11.4425 35.4367C13.3298 35.8198 15.7919 36.0209 18.9998 36.0209C22.2076 36.0209 24.6681 35.8198 26.5586 35.4367C28.4428 35.0567 29.8361 34.4787 30.8336 33.6681C32.8587 32.0182 32.8555 29.7097 32.8539 27.8699V27.7084C32.8539 25.1212 31.0014 23.0217 28.5393 21.6347C26.0377 20.2287 22.6636 19.3959 18.9998 19.3959ZM7.5206 27.7084C7.5206 26.361 8.50543 24.898 10.6255 23.7057C12.7092 22.5341 15.6668 21.7709 19.0013 21.7709C22.3327 21.7709 25.2903 22.5341 27.374 23.7057C29.4957 24.898 30.4789 26.361 30.4789 27.7084C30.4789 29.7794 30.4156 30.9447 29.3326 31.8251C28.7468 32.3032 27.7651 32.7703 26.0868 33.1092C24.4132 33.448 22.1253 33.6459 18.9998 33.6459C15.8743 33.6459 13.5848 33.448 11.9128 33.1092C10.2344 32.7703 9.25276 32.3032 8.66693 31.8267C7.58393 30.9447 7.5206 29.7794 7.5206 27.7084Z" fill="white" />
                         </svg>
-                        <input type="text" name="name" id="name" placeholder='Full Name' value={user.name}
+                        <input type="text" name="Name" id="Name" placeholder='Full Name' value={user.Name}
                             onChange={handleChange} required />
                     </div>
                     <div className="input flex">
@@ -104,7 +102,7 @@ function Register() {
 
                 {/* Create an Account Button */}
                 <div className="shift-left">
-                    <Link to={{ pathname: "/home", state: { userName: user.name } }}>
+                    <Link to={{ pathname: "/home", state: { userName: user.Name } }}>
                         <button onClick={handleCreate}>
                             Create
                             <span>
