@@ -1,0 +1,33 @@
+.autopool{
+    padding: 4vw;
+}
+
+.autopool h1{
+    font-size: 22px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.autopool p{
+    line-height: 1.2;
+}
+
+.autopool h1 span{
+    font-size: 28px;
+}
+
+.autopoolCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 8vw 4vw;
+    border-radius: 12px;
+    background-color: #262630;
+}
+
+.autopoolCard h1{
+    font-size: 28px;
+}
+
