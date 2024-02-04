@@ -12,6 +12,12 @@ const AdminPanel = () => {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
+  // User Registration Date
+  const formatDateString = (dateString) => {
+    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-GB', options);
+  };
+
   return (
     <div className='adminPanel'>
       <h1>Admin Panel</h1>
@@ -20,8 +26,9 @@ const AdminPanel = () => {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Mobile Number</th>
+            <th>Rank</th>
             <th>Affiliate</th>
+            <th>Earning</th>
             <th>Date</th>
           </tr>
         </thead>
@@ -29,8 +36,11 @@ const AdminPanel = () => {
           {users.map((user) => (
             <tr key={user._id} className='userCard'>
               <td>{user.Name}</td>
-              <td>{user.phone}</td>
-              <td>0</td>
+              <td>{user.rank}</td>
+              <td>{user.affiliateMembers}</td>
+              <td>₹{user.earning}</td>
+              <td>{formatDateString(user.registrationDate)}</td>
+              
             </tr>
           ))}
         </tbody>
