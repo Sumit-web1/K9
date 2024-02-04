@@ -36,6 +36,8 @@ const register = async (req, res) => {
       earning,
     });
 
+    await userCreated.save();
+
     res.status(200).json({ msg: userCreated });
   } catch (error) {
     res.status(400).json("internal server error");
