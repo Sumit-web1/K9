@@ -7,7 +7,7 @@ const connectDB = require("./utils/database");
 const User = require("./models/user-model");
 
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://k9-money-income01.web.app"],
+  origin: "http://localhost:3000",
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
