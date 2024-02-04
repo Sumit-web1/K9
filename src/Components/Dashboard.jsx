@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../Style/Dashboard.css';
 import { Link, useLocation } from 'react-router-dom';
 import TotalEarning from './TotalEarning';
+import Chain from './Chain'
 
 function Dashboard() {
   const [menuActive, setMenuActive] = useState(false);
@@ -11,7 +12,7 @@ function Dashboard() {
     setMenuActive(!menuActive);
   };
 
-  const userName = state?.userName || 'Sumit';
+  const userName = state?.userName || 'Welcome to K9';
 
   // useEffect to log userName when it changes
   useEffect(() => {
@@ -61,6 +62,7 @@ function Dashboard() {
 
       <div className="container">
         <TotalEarning/>
+        <Chain/>
       </div>
     </div>
   );

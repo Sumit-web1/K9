@@ -8,7 +8,9 @@ import Dashboard from './Components/Dashboard';
 import Autopool from './Components/Autopool';
 import ReferalLink from './Components/ReferalLink';
 import Wallet from './Components/Wallet';
-import Profile from './Components/Profile';
+// import Profile from './Components/Profile';
+import AdminPanel from './Components/AdminPanel';
+
 
 
 function App() {
@@ -35,7 +37,7 @@ function AppContent() {
         <Route path='/referalLink' element={<ReferalLink/>} />
         <Route path='/wallet' element={<Wallet/>} />
 
-        <Route path='/profile' element={<Profile/>} />
+        <Route path='/profile' element={<AdminPanel/>} />
       </Routes>
 
       {/* Conditionally render BottomNav */}

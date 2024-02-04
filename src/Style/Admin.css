@@ -1,0 +1,29 @@
+.adminPanel{
+    width: 100%;
+    height: 100vh;
+    padding: 4vw;
+    background-color: white;
+    color: black;
+}
+
+.adminPanel > h1{
+    font-size: 7vw;
+    font-weight: 700;
+}
+
+.adminPanel table{
+    width: 100%;
+    padding: 2vw;
+    margin-top: 20px;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.adminPanel table thead{
+    margin-bottom: 10px;
+}
+
+.userCard{
+    margin: 2vw;
+}
